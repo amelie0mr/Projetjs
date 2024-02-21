@@ -1,8 +1,3 @@
-
-
-
-///exemple
-
 function multiplication(a,b){
     return a*b;
 }
@@ -31,9 +26,6 @@ function ajouteroperation(valeur) {
 function reset() {
     equation.value = "";
 }
-
-
-
 
 function calculer() {
     let equation = document.getElementById("equation");
@@ -95,5 +87,33 @@ function calculer() {
     return 0;
 }
 
+function calcul() {
+    let premierNombre = document.getElementById("premierNombre").value;
+    let secondNombre = document.getElementById("secondNombre").value;
+    let operation = document.getElementById("operation").value;
 
+    premierNombre = parseInt(premierNombre);
+    secondNombre = parseInt(secondNombre);
 
+    // console.log(premierNombre);
+    // console.log(secondNombre);
+    // console.log(operation);
+
+    if (operation === "+") {
+        resultat = addition(premierNombre,secondNombre);
+    } else if (operation === "-") {
+        resultat = soustraction(premierNombre,secondNombre);
+    } else if (operation === "*") {
+        resultat = multiplication(premierNombre,secondNombre);
+    } else if (operation === "/") {
+        if (secondNombre === 0) {
+            resultat = "Impossible de diviser par 0";
+        } else {
+            resultat = division(premierNombre,secondNombre);
+        }
+    }
+
+    document.getElementById("resultat").textContent = "Le résultat de votre opération est : " + resultat;
+    console.log(resultat);
+    return 0;
+}
